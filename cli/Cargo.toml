@@ -1,0 +1,34 @@
+[package]
+name = "hand-cli"
+description = "Command-line interface for HAND Protocol"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+readme = "README.md"
+rust-version.workspace = true
+
+[[bin]]
+name = "hand"
+path = "src/main.rs"
+
+[dependencies]
+anchor-lang = { workspace = true }
+anchor-spl = { workspace = true }
+solana-sdk = { workspace = true }
+solana-client = { workspace = true }
+borsh = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+clap = { workspace = true }
+bs58 = { workspace = true }
+sha2 = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true }
+colored = "2.1"
+dialoguer = "0.11"
+indicatif = "0.17"
+dirs = "5.0"
+toml_edit = "0.22"
