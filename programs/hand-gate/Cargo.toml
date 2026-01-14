@@ -1,0 +1,26 @@
+[package]
+name = "hand_gate"
+version.workspace = true
+edition.workspace = true
+description = "HAND Protocol — agent verification gateway"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "hand_gate"
+
+[features]
+default = []
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+idl-build = ["anchor-lang/idl-build"]
+
+[dependencies]
+anchor-lang = { workspace = true }
+solana-program = { workspace = true }
+borsh = { workspace = true }
+thiserror = { workspace = true }
+hand_registry = { path = "../hand-registry", features = ["cpi"] }
+delegation = { path = "../delegation", features = ["cpi"] }
+reputation = { path = "../reputation", features = ["cpi"] }
