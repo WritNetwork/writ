@@ -1,0 +1,94 @@
+{
+  "version": "0.4.1",
+  "name": "hand_gate",
+  "instructions": [
+    {
+      "name": "verifyAgent",
+      "accounts": [
+        { "name": "delegation", "isMut": false, "isSigner": false },
+        { "name": "hand", "isMut": false, "isSigner": false },
+        { "name": "clock", "isMut": false, "isSigner": false }
+      ],
+      "args": [
+        { "name": "agent", "type": "publicKey" }
+      ]
+    },
+    {
+      "name": "verifyAgentWithReputation",
+      "accounts": [
+        { "name": "delegation", "isMut": false, "isSigner": false },
+        { "name": "hand", "isMut": false, "isSigner": false },
+        { "name": "reputation", "isMut": false, "isSigner": false },
+        { "name": "clock", "isMut": false, "isSigner": false }
+      ],
+      "args": [
+        { "name": "agent", "type": "publicKey" },
+        { "name": "minScore", "type": "u32" }
+      ]
+    },
+    {
+      "name": "verifyAgentWithScope",
+      "accounts": [
+        { "name": "delegation", "isMut": false, "isSigner": false },
+        { "name": "hand", "isMut": false, "isSigner": false },
+        { "name": "clock", "isMut": false, "isSigner": false }
+      ],
+      "args": [
+        { "name": "agent", "type": "publicKey" },
+        { "name": "requiredAction", "type": "u16" },
+        { "name": "requiredProgram", "type": "publicKey" },
+        { "name": "lamports", "type": "u64" }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "VerifyResult",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "isValid", "type": "bool" },
+          { "name": "handKey", "type": "publicKey" },
+          { "name": "reputationScore", "type": "u32" },
+          { "name": "delegatedAt", "type": "i64" },
+          { "name": "expiresAt", "type": "i64" },
+          { "name": "allowedActions", "type": "u16" }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "AgentVerified",
+      "fields": [
+        { "name": "agent", "type": "publicKey", "index": true },
+        { "name": "hand", "type": "publicKey", "index": true },
+        { "name": "reputationScore", "type": "u32", "index": false }
+      ]
+    },
+    {
+      "name": "AgentRejected",
+      "fields": [
+        { "name": "agent", "type": "publicKey", "index": true },
+        { "name": "reason", "type": "string", "index": false }
+      ]
+    }
+  ],
+  "errors": [
+    { "code": 6000, "name": "DelegationNotFound", "msg": "No delegation found for this agent" },
+    { "code": 6001, "name": "DelegationNotActive", "msg": "Delegation has been revoked" },
+    { "code": 6002, "name": "DelegationExpired", "msg": "Delegation has expired" },
+    { "code": 6003, "name": "HandNotFound", "msg": "No Hand found for this delegation" },
+    { "code": 6004, "name": "HandNotActive", "msg": "Hand has been revoked" },
+    { "code": 6005, "name": "InsufficientReputation", "msg": "Agent reputation below required threshold" },
+    { "code": 6006, "name": "ReputationNotFound", "msg": "No reputation record found" },
+    { "code": 6007, "name": "ActionNotAllowed", "msg": "Required action not in delegation scope" },
+    { "code": 6008, "name": "ProgramNotAllowed", "msg": "Required program not in delegation whitelist" },
+    { "code": 6009, "name": "BudgetExceeded", "msg": "Transaction would exceed spending budget" },
+    { "code": 6010, "name": "InvalidDelegation", "msg": "Delegation data is malformed" },
+    { "code": 6011, "name": "InvalidHand", "msg": "Hand data is malformed" }
+  ],
+  "metadata": {
+    "address": "11111111111111111111111111111111"
+  }
+}
