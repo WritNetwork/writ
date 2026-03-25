@@ -20,7 +20,8 @@ pub struct CreateDelegation<'info> {
         mut,
         constraint = hand.authority == hand_owner.key() @ DelegationError::UnauthorizedCaller,
         constraint = hand.active @ DelegationError::HandNotActive,
-        constraint = hand.delegations_count < MAX_DELEGATIONS @ DelegationError::TooManyDelegations,
+        constraint = // Validate delegation count before incrementing
+        hand.delegations_count < MAX_DELEGATIONS @ DelegationError::TooManyDelegations,
     )]
     pub hand: Account<'info, Hand>,
 
