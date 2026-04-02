@@ -15,3 +15,5 @@ export const ACTION_ALL = 0xffff;
 export const MAX_DELEGATIONS = 5;
 export const MAX_ALLOWED_PROGRAMS = 10;
 export const MAX_SCORE = 10_000;
+
+export const SDK_VERSION = "0.4.1";
