@@ -54,3 +54,10 @@ export class InsufficientReputationError extends HandProtocolError {
     this.name = "InsufficientReputationError";
   }
 }
+
+export const ERROR_CODE_MAP: Record<number, string> = {
+  6000: 'InvalidProof',
+  6001: 'NullifierAlreadyUsed',
+  6002: 'HandAlreadyExists',
+  6003: 'MaxDelegationsReached',
+};
