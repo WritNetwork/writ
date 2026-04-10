@@ -16,3 +16,6 @@ pub const VERIFICATION_AUTHORITY_SEED: &[u8] = b"verification_authority";
 /// Hard-coded protocol authority pubkey (replace with real key before mainnet).
 /// This is the only account allowed to revoke hands.
 pub const PROTOCOL_AUTHORITY: &str = "HANDauthXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+
+/// Maximum proof size in bytes
+pub const MAX_PROOF_SIZE: usize = 256;
