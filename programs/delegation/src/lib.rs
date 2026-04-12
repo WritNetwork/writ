@@ -1,3 +1,4 @@
+/// Delegation - Scoped permission transfer from human to AI agent
 use anchor_lang::prelude::*;
 
 pub mod constants;
