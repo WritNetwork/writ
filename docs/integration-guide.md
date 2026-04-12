@@ -260,3 +260,11 @@ require!(has_agent_registry || has_hand, MyError::NotVerified);
 ```
 
 This allows gradual migration without breaking existing integrations.
+
+## Troubleshooting
+
+### Common Issues
+
+**PDA derivation mismatch**: Ensure you use the exact same seeds as defined in the protocol constants. The SDK `findHandPda`, `findDelegationPda` functions handle this automatically.
+
+**Insufficient compute budget**: If your instruction combined with HAND verification exceeds 200,000 CU, request a higher budget via `ComputeBudgetProgram.setComputeUnitLimit()`.
