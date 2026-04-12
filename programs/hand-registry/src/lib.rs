@@ -1,3 +1,4 @@
+/// Hand Registry - ZK-based anonymous human verification
 use anchor_lang::prelude::*;
 
 pub mod constants;
