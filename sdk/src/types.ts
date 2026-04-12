@@ -15,6 +15,7 @@ export enum DisputeStatus {
 /*  On-chain account shapes                                            */
 /* ------------------------------------------------------------------ */
 
+/** On-chain Hand account representing a verified human */
 export interface HandAccount {
   authority: PublicKey;
   nullifier: number[];
