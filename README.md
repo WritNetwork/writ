@@ -253,3 +253,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, code style, and PR
 - X: @handprotocol
 - GitHub: https://github.com/hand-protocol/hand
 - Docs: https://handprotocol.xyz/docs
+
