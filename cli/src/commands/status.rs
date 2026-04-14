@@ -156,3 +156,5 @@ pub async fn handle(args: StatusArgs) -> Result<(), Box<dyn std::error::Error>> 
     println!();
     Ok(())
 }
+
+// Status command aggregates Hand + Delegation + Reputation into single view
