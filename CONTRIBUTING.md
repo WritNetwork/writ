@@ -74,3 +74,12 @@ Use the issue templates provided in the repository. Include as much detail as po
 ## Code of Conduct
 
 This project follows the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md). By participating, you agree to uphold its terms.
+
+## Testing
+
+All changes must include tests. Run the full suite before submitting:
+
+```bash
+make test
+make lint
+```
