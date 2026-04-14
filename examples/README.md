@@ -16,6 +16,8 @@ yarn install
 
 ## Examples
 
+All examples require a funded devnet wallet.
+
 ### `mint-hand.ts`
 
 Mint a new HAND identity by submitting a ZK proof of humanity. Walks through keypair loading, PDA derivation, proof generation, transaction submission, and on-chain verification.
