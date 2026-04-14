@@ -521,3 +521,5 @@ describe("delegation", () => {
     });
   });
 });
+
+// Additional edge case coverage planned for v0.5
