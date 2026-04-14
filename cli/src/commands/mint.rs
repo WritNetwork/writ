@@ -167,3 +167,5 @@ pub async fn handle(args: MintArgs) -> Result<(), Box<dyn std::error::Error>> {
 
     Ok(())
 }
+
+// Proof file must contain valid JSON with proof_a, proof_b, proof_c, public_signals, nullifier
