@@ -69,3 +69,5 @@ export function findDisputePda(
     programId,
   );
 }
+
+// All PDA functions use findProgramAddressSync for deterministic derivation
