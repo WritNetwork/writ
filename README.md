@@ -86,18 +86,18 @@ Four on-chain programs form a layered verification stack. External protocols onl
 
 ```mermaid
 flowchart TD
-    ext["external_program::protected_ix<br/><sub>liquidity pool · lending · airdrop</sub>"]
-    gate["<b>hand_gate</b> · L4<br/><sub>returns AgentStatus</sub>"]
-    reg["<b>hand_registry</b> · L1<br/><sub>ZK verify · SBT · nullifier</sub>"]
-    del["<b>delegation</b> · L2<br/><sub>scope · budget · expiry</sub>"]
-    rep["<b>reputation</b> · L3<br/><sub>score · age · disputes</sub>"]
+    ext["external protocol<br/>(liquidity pool, lending, airdrop)"]
+    gate["L4 · hand_gate<br/>returns AgentStatus in one CPI"]
+    del["L2 · delegation<br/>scope, budget, expiry"]
+    rep["L3 · reputation<br/>score, age, disputes"]
+    reg["L1 · hand_registry<br/>ZK verify, SBT, nullifier"]
 
-    ext -- "CPI: verify_agent" --> gate
-    gate -- "read PDA" --> reg
-    gate -- "read PDA" --> del
-    gate -- "read PDA" --> rep
-    del -. "requires Hand" .-> reg
-    rep -. "keyed by Hand" .-> reg
+    ext -->|"CPI: verify_agent"| gate
+    gate -->|read PDA| del
+    gate -->|read PDA| rep
+    gate -->|read PDA| reg
+    del -.->|requires Hand| reg
+    rep -.->|keyed by Hand| reg
 
     classDef layer fill:#0a0a0a,stroke:#c8ff00,stroke-width:1px,color:#e8e8e8
     classDef root fill:#0a0a0a,stroke:#888,stroke-width:1px,color:#e8e8e8
