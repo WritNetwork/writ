@@ -38,7 +38,7 @@ sha2 = "0.10"
 ark-bn254 = "0.4"
 ark-groth16 = "0.4"
 ark-serialize = "0.4"
-ark-ff = "0.4"
+ark-ff = "0.5"
 
 [profile.release]
 overflow-checks = true
