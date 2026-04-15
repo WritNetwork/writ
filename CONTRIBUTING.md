@@ -50,7 +50,7 @@ cd sdk && npm test
 3. Write or update tests for your changes.
 4. Ensure CI passes (format, clippy, type check, security scan).
 5. Fill out the PR template completely.
-6. Request review from `@hand-protocol`.
+6. Request review from `@WritNetwork`.
 
 ## Commit Messages
 

@@ -3,23 +3,23 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/hand-protocol/hand/actions/workflows/ci.yml">
-    <img src="https://img.shields.io/github/actions/workflow/status/hand-protocol/hand/ci.yml?branch=main&style=flat-square&label=CI&color=00ff41" alt="CI" />
+  <a href="https://github.com/WritNetwork/writ/actions/workflows/ci.yml">
+    <img src="https://img.shields.io/github/actions/workflow/status/WritNetwork/writ/ci.yml?branch=main&style=flat-square&label=CI&color=00ff41" alt="CI" />
   </a>
-  <a href="https://github.com/hand-protocol/hand/releases">
-    <img src="https://img.shields.io/github/v/release/hand-protocol/hand?style=flat-square&color=00ff41" alt="Release" />
+  <a href="https://github.com/WritNetwork/writ/releases">
+    <img src="https://img.shields.io/github/v/release/WritNetwork/writ?style=flat-square&color=00ff41" alt="Release" />
   </a>
   <a href="LICENSE">
-    <img src="https://img.shields.io/github/license/hand-protocol/hand?style=flat-square&color=00ff41" alt="License" />
+    <img src="https://img.shields.io/github/license/WritNetwork/writ?style=flat-square&color=00ff41" alt="License" />
   </a>
-  <a href="https://github.com/hand-protocol/hand/commits/main">
-    <img src="https://img.shields.io/github/last-commit/hand-protocol/hand?style=flat-square&color=00ff41" alt="Last Commit" />
+  <a href="https://github.com/WritNetwork/writ/commits/main">
+    <img src="https://img.shields.io/github/last-commit/WritNetwork/writ?style=flat-square&color=00ff41" alt="Last Commit" />
   </a>
-  <a href="https://github.com/hand-protocol/hand">
-    <img src="https://img.shields.io/github/stars/hand-protocol/hand?style=flat-square&color=00ff41" alt="Stars" />
+  <a href="https://github.com/WritNetwork/writ">
+    <img src="https://img.shields.io/github/stars/WritNetwork/writ?style=flat-square&color=00ff41" alt="Stars" />
   </a>
-  <a href="https://github.com/hand-protocol/hand/issues">
-    <img src="https://img.shields.io/github/issues/hand-protocol/hand?style=flat-square&color=ff6600" alt="Issues" />
+  <a href="https://github.com/WritNetwork/writ/issues">
+    <img src="https://img.shields.io/github/issues/WritNetwork/writ?style=flat-square&color=ff6600" alt="Issues" />
   </a>
 </p>
 
@@ -94,7 +94,7 @@ All operations fit within Solana's default 200,000 CU limit per instruction.
 ## Build
 
 ```bash
-git clone https://github.com/hand-protocol/hand.git
+git clone https://github.com/WritNetwork/writ.git
 cd hand
 cargo check --workspace
 ```
@@ -139,7 +139,7 @@ hand delegate \
 ### Verify an Agent (SDK)
 
 ```typescript
-import { HandProtocol } from "@hand-protocol/sdk";
+import { HandProtocol } from "@writnetwork/sdk";
 import { Connection, PublicKey } from "@solana/web3.js";
 
 const connection = new Connection("https://api.devnet.solana.com");
@@ -215,7 +215,7 @@ pub fn quality_gate(ctx: Context<X>) -> Result<()> { ... }
 ## Project Structure
 
 ```
-hand-protocol/
+writ/
   programs/
     hand-registry/       ZK verification + SBT minting
       instructions/      initialize_hand, revoke_hand
@@ -251,6 +251,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, code style, and PR
 
 - Website: https://handprotocol.xyz
 - X: @handprotocol
-- GitHub: https://github.com/hand-protocol/hand
+- GitHub: https://github.com/WritNetwork/writ
 - Docs: https://handprotocol.xyz/docs
 
