@@ -17,9 +17,9 @@ In your program's `Cargo.toml`:
 
 ```toml
 [dependencies]
-writ_gate = { git = "https://github.com/WritNetwork/writ", features = ["cpi"] }
-writ_registry = { git = "https://github.com/WritNetwork/writ", features = ["cpi"] }
-delegation = { git = "https://github.com/WritNetwork/writ", features = ["cpi"] }
+writ_gate = { git = "https://github.com/WritNetwork/writ-v1", features = ["cpi"] }
+writ_registry = { git = "https://github.com/WritNetwork/writ-v1", features = ["cpi"] }
+delegation = { git = "https://github.com/WritNetwork/writ-v1", features = ["cpi"] }
 ```
 
 ### Step 2: Add Accounts to Your Instruction

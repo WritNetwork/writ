@@ -12,11 +12,11 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/WritNetwork/writ/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/WritNetwork/writ/ci.yml?branch=main&style=flat-square&label=ci&color=c8ff00&labelColor=0a0a0a" alt="CI" /></a>
-  <a href="https://github.com/WritNetwork/writ/releases"><img src="https://img.shields.io/github/v/release/WritNetwork/writ?style=flat-square&color=c8ff00&labelColor=0a0a0a" alt="Release" /></a>
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/WritNetwork/writ?style=flat-square&color=c8ff00&labelColor=0a0a0a" alt="License" /></a>
-  <a href="https://github.com/WritNetwork/writ/commits/main"><img src="https://img.shields.io/github/last-commit/WritNetwork/writ?style=flat-square&color=c8ff00&labelColor=0a0a0a" alt="Last Commit" /></a>
-  <a href="https://github.com/WritNetwork/writ/stargazers"><img src="https://img.shields.io/github/stars/WritNetwork/writ?style=flat-square&color=c8ff00&labelColor=0a0a0a" alt="Stars" /></a>
+  <a href="https://github.com/WritNetwork/writ-v1/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/WritNetwork/writ-v1/ci.yml?branch=main&style=flat-square&label=ci&color=c8ff00&labelColor=0a0a0a" alt="CI" /></a>
+  <a href="https://github.com/WritNetwork/writ-v1/releases"><img src="https://img.shields.io/github/v/release/WritNetwork/writ-v1?style=flat-square&color=c8ff00&labelColor=0a0a0a" alt="Release" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/WritNetwork/writ-v1?style=flat-square&color=c8ff00&labelColor=0a0a0a" alt="License" /></a>
+  <a href="https://github.com/WritNetwork/writ-v1/commits/main"><img src="https://img.shields.io/github/last-commit/WritNetwork/writ-v1?style=flat-square&color=c8ff00&labelColor=0a0a0a" alt="Last Commit" /></a>
+  <a href="https://github.com/WritNetwork/writ-v1/stargazers"><img src="https://img.shields.io/github/stars/WritNetwork/writ-v1?style=flat-square&color=c8ff00&labelColor=0a0a0a" alt="Stars" /></a>
   <a href="https://x.com/writnetwork"><img src="https://img.shields.io/badge/x-@writnetwork-c8ff00?style=flat-square&labelColor=0a0a0a" alt="X" /></a>
   <a href="https://writ.network"><img src="https://img.shields.io/badge/web-writ.network-c8ff00?style=flat-square&labelColor=0a0a0a" alt="Website" /></a>
 </p>
@@ -218,7 +218,7 @@ pub fn quality_gate(ctx: Context<X>) -> Result<()> { /* ... */ }
 ## §7 &nbsp; Build
 
 ```bash
-git clone https://github.com/WritNetwork/writ.git
+git clone https://github.com/WritNetwork/writ-v1.git
 cd writ
 anchor build
 anchor test

@@ -5,7 +5,7 @@ TypeScript SDK for WRIT Protocol — anonymous KYA (Know Your Agent) on Solana.
 ## Installation
 
 ```bash
-git clone https://github.com/WritNetwork/writ.git
+git clone https://github.com/WritNetwork/writ-v1.git
 cd hand/sdk
 npm install
 npm run build
