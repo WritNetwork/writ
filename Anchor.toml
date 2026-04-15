@@ -8,16 +8,16 @@ resolution = true
 skip-lint = false
 
 [programs.devnet]
-hand_registry = "11111111111111111111111111111111"
-delegation = "11111111111111111111111111111111"
-reputation = "11111111111111111111111111111111"
-hand_gate = "11111111111111111111111111111111"
+hand_registry = "FrEcFzPx9zqooVp1GmkMdiNXkpgcx3UJRN97YUR9MFTk"
+delegation = "EnoPMLDuLo33PUvYBekpaTzyembPuZD82PAcv3qvRFxK"
+reputation = "F8yFcvoXpupNahzJ2wSKDBErqKgmE7ws1gVVtdAq33FC"
+hand_gate = "3tpfhT2m1vF7FCLsGazbEPFRiRnjgwk2CnC3yeonas7M"
 
 [programs.mainnet]
-hand_registry = "11111111111111111111111111111111"
-delegation = "11111111111111111111111111111111"
-reputation = "11111111111111111111111111111111"
-hand_gate = "11111111111111111111111111111111"
+hand_registry = "FrEcFzPx9zqooVp1GmkMdiNXkpgcx3UJRN97YUR9MFTk"
+delegation = "EnoPMLDuLo33PUvYBekpaTzyembPuZD82PAcv3qvRFxK"
+reputation = "F8yFcvoXpupNahzJ2wSKDBErqKgmE7ws1gVVtdAq33FC"
+hand_gate = "3tpfhT2m1vF7FCLsGazbEPFRiRnjgwk2CnC3yeonas7M"
 
 [registry]
 url = "https://api.apr.dev"
