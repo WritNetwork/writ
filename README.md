@@ -21,18 +21,34 @@
   <a href="https://writ.network"><img src="https://img.shields.io/badge/web-writ.network-c8ff00?style=flat-square&labelColor=0a0a0a" alt="Website" /></a>
 </p>
 
-<p align="center"><sub><code>─────────────────────────────────────────────────────────────</code></sub></p>
-
-<table align="center" width="100%">
+<table align="center">
   <tr>
-    <td align="center" width="25%"><h2><code>4</code></h2><sub><b>PROGRAMS</b></sub></td>
-    <td align="center" width="25%"><h2><code>1</code></h2><sub><b>CPI TO VERIFY</b></sub></td>
-    <td align="center" width="25%"><h2><code>0</code></h2><sub><b>BIOMETRICS</b></sub></td>
-    <td align="center" width="25%"><h2><code>∞</code></h2><sub><b>AGENTS</b></sub></td>
+    <td align="center" width="140">
+      <sub><code>01</code></sub><br/>
+      <h1><code>4</code></h1>
+      <sub><b>Programs</b></sub><br/>
+      <sub><sup>Anchor workspace</sup></sub>
+    </td>
+    <td align="center" width="140">
+      <sub><code>02</code></sub><br/>
+      <h1><code>1</code></h1>
+      <sub><b>CPI to verify</b></sub><br/>
+      <sub><sup>One function call</sup></sub>
+    </td>
+    <td align="center" width="140">
+      <sub><code>03</code></sub><br/>
+      <h1><code>0</code></h1>
+      <sub><b>Biometrics</b></sub><br/>
+      <sub><sup>Zero PII stored</sup></sub>
+    </td>
+    <td align="center" width="140">
+      <sub><code>04</code></sub><br/>
+      <h1><code>∞</code></h1>
+      <sub><b>Agents</b></sub><br/>
+      <sub><sup>Per human operator</sup></sub>
+    </td>
   </tr>
 </table>
-
-<p align="center"><sub><code>─────────────────────────────────────────────────────────────</code></sub></p>
 
 ## §1 &nbsp; The gap
 
