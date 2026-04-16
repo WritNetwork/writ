@@ -47,27 +47,63 @@ Built with Rust, Anchor 0.30, ark-bn254, and TypeScript.
 
 ## Architecture
 
-```
-Layer 4: Hand Gate        External programs verify agents via CPI
-Layer 3: Reputation       Tracks agent behavior, scores, disputes
-Layer 2: Delegation       Scoped permission transfer from human to agent
-Layer 1: Hand Registry    ZK-based anonymous human verification
-```
+Four on-chain programs form a layered verification stack. External protocols only ever touch the top layer (`hand_gate`), which reads from the three layers below it in a single cross-program invocation.
+
+### Program stack
+
+| Layer | Program | Role | Reads from | State |
+|---|---|---|---|---|
+| L4 | `hand_gate` | Single verification entrypoint. Returns `AgentStatus` in one CPI. | L1, L2, L3 | stateless |
+| L3 | `reputation` | 0–10,000 score from on-chain behavior. Stake-based dispute resolution. | — | `ReputationAccount` PDA |
+| L2 | `delegation` | Scoped permission boundaries (program whitelist, budget cap, expiry). | L1 | `DelegationScope` PDA |
+| L1 | `hand_registry` | ZK Groth16 (BN254) proof verification. Poseidon nullifier. Token-2022 SBT mint. | — | `HandAccount` PDA, nullifier set |
+
+### Call flow
 
 ```
-                    +------------------+
-                    |    Hand Gate     |  <-- external programs call via CPI
-                    +---+---------+----+
-                        |         |
-          +-------------+    +----+-----------+
-          v                  v                v
-+------------------+  +------------------+  +------------------+
-|  Hand Registry   |  |   Delegation     |  |   Reputation     |
-|                  |  |                  |  |                  |
-|  ZK Verify       |  |  Scoped Perms    |  |  Score + Dispute |
-|  SBT Mint        |  |  Budget Tracking |  |  Reporter System |
-+------------------+  +------------------+  +------------------+
+             ┌──────────────────────────────────────────────────────┐
+             │          external_program::protected_ix              │
+             │    (liquidity pool, lending market, airdrop, ...)    │
+             └───────────────────────┬──────────────────────────────┘
+                                     │ CPI: hand_gate::verify_agent
+                                     ▼
+             ┌──────────────────────────────────────────────────────┐
+ L4          │                    hand_gate                         │
+             │     returns AgentStatus { is_valid, scope, score }   │
+             └────────────┬────────────┬────────────────┬───────────┘
+                          │            │                │
+                          │ read PDA   │ read PDA       │ read PDA
+                          ▼            ▼                ▼
+                 ┌──────────────┐ ┌────────────┐ ┌──────────────┐
+ L1 · L2 · L3    │ hand_registry│ │ delegation │ │  reputation  │
+                 │   ZK verify  │ │ scope PDA  │ │  score + age │
+                 │   SBT mint   │ │ budget cap │ │  disputes    │
+                 └──────────────┘ └────────────┘ └──────────────┘
+                          ▲
+                          │
+                          │ L2 and L3 depend on L1 (Hand must exist)
 ```
+
+### Design properties
+
+- **Single CPI surface.** Any Solana program integrates by calling `hand_gate::verify_agent` once. The returned `AgentStatus` struct is all that's needed to gate an instruction.
+- **No off-chain dependency.** All state is on-chain. No oracle, no relayer, no trusted fetcher.
+- **No circular dependencies.** Call graph flows top-down (L4 → L1/L2/L3). L1 is the root of trust; L2 and L3 read it but never the other way around.
+- **Budget-aware.** The full four-program verification runs inside the Solana 200k compute-unit budget.
+- **Failure modes are explicit.** `AgentStatus.is_valid` is false when the Hand is revoked, the delegation expired, the budget is exhausted, or the score dropped below the caller-supplied threshold. Callers branch on a single boolean.
+
+## Deployments
+
+Deployed to Solana devnet. All four programs are upgradeable under the `BPFLoaderUpgradeab1e...` program and verifiable via RPC.
+
+| Program | Devnet Address | Explorer |
+|---|---|---|
+| `hand_gate` | `3tpfhT2m1vF7FCLsGazbEPFRiRnjgwk2CnC3yeonas7M` | [view](https://explorer.solana.com/address/3tpfhT2m1vF7FCLsGazbEPFRiRnjgwk2CnC3yeonas7M?cluster=devnet) |
+| `reputation` | `F8yFcvoXpupNahzJ2wSKDBErqKgmE7ws1gVVtdAq33FC` | [view](https://explorer.solana.com/address/F8yFcvoXpupNahzJ2wSKDBErqKgmE7ws1gVVtdAq33FC?cluster=devnet) |
+| `delegation` | `EnoPMLDuLo33PUvYBekpaTzyembPuZD82PAcv3qvRFxK` | [view](https://explorer.solana.com/address/EnoPMLDuLo33PUvYBekpaTzyembPuZD82PAcv3qvRFxK?cluster=devnet) |
+| `hand_registry` | `FrEcFzPx9zqooVp1GmkMdiNXkpgcx3UJRN97YUR9MFTk` | [view](https://explorer.solana.com/address/FrEcFzPx9zqooVp1GmkMdiNXkpgcx3UJRN97YUR9MFTk?cluster=devnet) |
+
+Mainnet deployment is pending an external audit.
 
 ## How It Works
 
@@ -144,10 +180,10 @@ import { Connection, PublicKey } from "@solana/web3.js";
 
 const connection = new Connection("https://api.devnet.solana.com");
 const hand = new HandProtocol(connection, {
-  handRegistry: new PublicKey("11111111111111111111111111111111"),
-  delegation: new PublicKey("11111111111111111111111111111111"),
-  reputation: new PublicKey("11111111111111111111111111111111"),
-  handGate: new PublicKey("11111111111111111111111111111111"),
+  handRegistry: new PublicKey("FrEcFzPx9zqooVp1GmkMdiNXkpgcx3UJRN97YUR9MFTk"),
+  delegation: new PublicKey("EnoPMLDuLo33PUvYBekpaTzyembPuZD82PAcv3qvRFxK"),
+  reputation: new PublicKey("F8yFcvoXpupNahzJ2wSKDBErqKgmE7ws1gVVtdAq33FC"),
+  handGate: new PublicKey("3tpfhT2m1vF7FCLsGazbEPFRiRnjgwk2CnC3yeonas7M"),
 });
 
 const result = await hand.verifyAgent(agentPublicKey);
