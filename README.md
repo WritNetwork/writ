@@ -60,28 +60,26 @@ Four on-chain programs form a layered verification stack. External protocols onl
 
 ### Call flow
 
-```
-             ┌──────────────────────────────────────────────────────┐
-             │          external_program::protected_ix              │
-             │    (liquidity pool, lending market, airdrop, ...)    │
-             └───────────────────────┬──────────────────────────────┘
-                                     │ CPI: hand_gate::verify_agent
-                                     ▼
-             ┌──────────────────────────────────────────────────────┐
- L4          │                    hand_gate                         │
-             │     returns AgentStatus { is_valid, scope, score }   │
-             └────────────┬────────────┬────────────────┬───────────┘
-                          │            │                │
-                          │ read PDA   │ read PDA       │ read PDA
-                          ▼            ▼                ▼
-                 ┌──────────────┐ ┌────────────┐ ┌──────────────┐
- L1 · L2 · L3    │ hand_registry│ │ delegation │ │  reputation  │
-                 │   ZK verify  │ │ scope PDA  │ │  score + age │
-                 │   SBT mint   │ │ budget cap │ │  disputes    │
-                 └──────────────┘ └────────────┘ └──────────────┘
-                          ▲
-                          │
-                          │ L2 and L3 depend on L1 (Hand must exist)
+```mermaid
+flowchart TD
+    ext["external_program::protected_ix<br/>(liquidity pool · lending · airdrop)"]
+    gate["<b>hand_gate</b> &nbsp;·&nbsp; L4<br/>returns AgentStatus { is_valid, scope, score }"]
+    reg["<b>hand_registry</b> &nbsp;·&nbsp; L1<br/>ZK verify · SBT mint · nullifier"]
+    del["<b>delegation</b> &nbsp;·&nbsp; L2<br/>scope · budget · expiry"]
+    rep["<b>reputation</b> &nbsp;·&nbsp; L3<br/>score · age bonus · disputes"]
+
+    ext -- "CPI: verify_agent" --> gate
+    gate -- "read PDA" --> reg
+    gate -- "read PDA" --> del
+    gate -- "read PDA" --> rep
+    del -. "requires Hand" .-> reg
+    rep -. "keyed by Hand" .-> reg
+
+    classDef layer fill:#0a0a0a,stroke:#c8ff00,stroke-width:1px,color:#e8e8e8
+    classDef root fill:#0a0a0a,stroke:#888,stroke-width:1px,color:#e8e8e8
+    class gate,del,rep layer
+    class reg root
+    class ext root
 ```
 
 ### Design properties
