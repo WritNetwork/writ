@@ -17,9 +17,9 @@ In your program's `Cargo.toml`:
 
 ```toml
 [dependencies]
-hand_gate = { git = "https://github.com/hand-protocol/hand", features = ["cpi"] }
-hand_registry = { git = "https://github.com/hand-protocol/hand", features = ["cpi"] }
-delegation = { git = "https://github.com/hand-protocol/hand", features = ["cpi"] }
+hand_gate = { git = "https://github.com/WritNetwork/writ", features = ["cpi"] }
+hand_registry = { git = "https://github.com/WritNetwork/writ", features = ["cpi"] }
+delegation = { git = "https://github.com/WritNetwork/writ", features = ["cpi"] }
 ```
 
 ### Step 2: Add Accounts to Your Instruction
@@ -140,7 +140,7 @@ Use case: DeFi protocols, custody systems, high-value operations.
 ### Using the TypeScript SDK
 
 ```typescript
-import { HandProtocol } from "@hand-protocol/sdk";
+import { HandProtocol } from "@writnetwork/sdk";
 import { Connection, PublicKey } from "@solana/web3.js";
 
 const hand = new HandProtocol(connection, programIds);
@@ -166,7 +166,7 @@ const delegationPda = findDelegationPda(
 When building transactions that include HAND verification, you need to resolve three PDAs:
 
 ```typescript
-import { findHandPda, findDelegationPda, findReputationPda } from "@hand-protocol/sdk";
+import { findHandPda, findDelegationPda, findReputationPda } from "@writnetwork/sdk";
 
 // 1. Find the delegation for this agent
 const [delegationPda] = findDelegationPda(handPda, agentPubkey, delegationProgramId);

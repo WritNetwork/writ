@@ -1,11 +1,11 @@
-# @hand-protocol/sdk
+# @writnetwork/sdk
 
 TypeScript SDK for HAND Protocol — anonymous KYA (Know Your Agent) on Solana.
 
 ## Installation
 
 ```bash
-git clone https://github.com/hand-protocol/hand.git
+git clone https://github.com/WritNetwork/writ.git
 cd hand/sdk
 npm install
 npm run build
@@ -21,7 +21,7 @@ import {
   parseActions,
   parseDuration,
   solToLamports,
-} from "@hand-protocol/sdk";
+} from "@writnetwork/sdk";
 
 const connection = new Connection("https://api.mainnet-beta.solana.com");
 const hand = new HandProtocol(connection, {

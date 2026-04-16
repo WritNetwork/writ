@@ -14,5 +14,5 @@ CPI verification interface for external programs.
 
 Add to your Cargo.toml:
 ```toml
-hand_gate = { git = "https://github.com/hand-protocol/hand", features = ["cpi"] }
+hand_gate = { git = "https://github.com/WritNetwork/writ", features = ["cpi"] }
 ```

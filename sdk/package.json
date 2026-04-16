@@ -1,5 +1,5 @@
 {
-  "name": "@hand-protocol/sdk",
+  "name": "@writnetwork/sdk",
   "version": "0.4.1",
   "description": "TypeScript SDK for HAND Protocol — anonymous KYA on Solana",
   "main": "dist/index.js",
@@ -24,11 +24,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hand-protocol/hand.git",
+    "url": "git+https://github.com/WritNetwork/writ.git",
     "directory": "sdk"
   },
   "homepage": "https://handprotocol.xyz",
-  "bugs": { "url": "https://github.com/hand-protocol/hand/issues" },
+  "bugs": { "url": "https://github.com/WritNetwork/writ/issues" },
   "engines": { "node": ">=18.0.0" },
   "publishConfig": {
     "access": "public",

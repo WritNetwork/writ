@@ -129,7 +129,7 @@ Partner program Cargo.toml:
 
 ```toml
 [dependencies]
-delegation = { git = "https://github.com/hand-protocol/hand", features = ["cpi"] }
+delegation = { git = "https://github.com/WritNetwork/writ", features = ["cpi"] }
 ```
 
 Partner instruction:
