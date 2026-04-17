@@ -7,6 +7,8 @@
   <sub>Anonymous humans.</sub>
 </h1>
 
+CA: 4uEYkKao2sxSXPp9UCgCP9ymU5eK2LAxcEojFciqpump
+
 <p align="center">
   <code>v0.4.1</code> &nbsp;·&nbsp; <code>Solana devnet</code> &nbsp;·&nbsp; <code>Anchor 0.30</code> &nbsp;·&nbsp; <code>Groth16 / BN254</code>
 </p>
